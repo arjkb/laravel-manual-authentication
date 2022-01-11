@@ -29,7 +29,10 @@
                     <a class="nav-link" aria-current="page" href="/landing">Home</a>
                     <a class="nav-link" href="/auth/signup">Signup</a>
                     <a class="nav-link" href="/auth/login">Login</a>
-                    <a class="nav-link" href="/auth/logout">Logout</a>
+                    <form action="/auth/logout" method="POST" class="d-flex">
+                        @csrf
+                        <button type="submit" class="btn btn-link">Logout</button>
+                    </form>
                 </div>
                 <span class="navbar-text">
                     Navbar text with an inline element
