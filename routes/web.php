@@ -23,4 +23,9 @@ Route::prefix('auth')->group(function () {
         Route::get('/', fn () => view('auth.signup'));
         Route::post('/', [LoginController::class, 'signup']);
     });
+
+    Route::prefix('login')->group(function () {
+        Route::get('/', fn () => view('auth.login'));
+        Route::post('/', [LoginController::class, 'login']);
+    });
 });
