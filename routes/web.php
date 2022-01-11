@@ -29,3 +29,5 @@ Route::prefix('auth')->group(function () {
         Route::post('/', [LoginController::class, 'login']);
     });
 });
+
+Route::get('landing', fn () => view('landing'));
