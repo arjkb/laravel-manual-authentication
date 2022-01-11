@@ -10,7 +10,7 @@ class LoginController extends Controller
 {
     public function signup(Request $request)
     {
-        $credentials = $request->validate($request->all(), [
+        $credentials = $request->validate([
             'username' => 'required|string|unique:customers,username',
             'password' => 'required|string',
         ]);
@@ -20,6 +20,6 @@ class LoginController extends Controller
         $customer->password = Hash::make($credentials['password']);
         $customer->save();
 
-        // TODO: redirect to login page
+        return redirect('auth/login')->with('flash', 'User registered!');
     }
 }
