@@ -19,7 +19,7 @@
 <body class="antialiased">
 
     @if (session('flash'))
-    <div class="alert alert-success">
+    <div class="alert alert-primary" role="alert">
         {{ session('flash') }}
     </div>
     @endif
