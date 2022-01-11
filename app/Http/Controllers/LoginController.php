@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -21,5 +22,28 @@ class LoginController extends Controller
         $customer->save();
 
         return redirect('auth/login')->with('flash', 'User registered!');
+    }
+
+    /**
+     * Logs in the user
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            $request->session()->flash('flash', 'Login successful');
+            return redirect()->intended('landing');
+        } else {
+            $request->session()->flash('flash', 'User login attempt failed');
+            return redirect()->intended('auth/login');
+        }
     }
 }
