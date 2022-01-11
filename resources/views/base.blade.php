@@ -27,16 +27,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav">
                     <a class="nav-link" aria-current="page" href="/landing">Home</a>
-                    <a class="nav-link" href="/auth/signup">Signup</a>
-                    <a class="nav-link" href="/auth/login">Login</a>
+                    @if(auth()->check())
                     <form action="/auth/logout" method="POST" class="d-flex">
                         @csrf
                         <button type="submit" class="btn btn-link">Logout</button>
                     </form>
+                    @else
+                    <a class="nav-link" href="/auth/signup">Signup</a>
+                    <a class="nav-link" href="/auth/login">Login</a>
+                    @endif
                 </div>
+                @if(auth()->check())
                 <span class="navbar-text">
-                    Navbar text with an inline element
+                    Logged in as {{ auth()->user()->username }}
                 </span>
+                @endif
             </div>
         </div>
     </nav>
