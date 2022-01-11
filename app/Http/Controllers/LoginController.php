@@ -46,4 +46,19 @@ class LoginController extends Controller
             return redirect()->intended('auth/login');
         }
     }
+
+    /**
+     * Log out
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('auth/login')->with('flash', 'User logged out');
+    }
 }
