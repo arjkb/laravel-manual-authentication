@@ -1,7 +1,8 @@
 @extends('base')
 
 @section('content')
-<form class="mt-5" method="POST" action="signup">
+<h2 class="mt-5 mb-3">Signup</h2>
+<form method="POST" action="signup">
     @csrf
     <div class="mb-3">
         <label for="username" class="form-label">Username</label>
