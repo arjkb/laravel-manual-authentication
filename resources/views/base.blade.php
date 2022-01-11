@@ -18,6 +18,26 @@
 
 <body class="antialiased">
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Laravel Manual Authentication Demo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-nav">
+                    <a class="nav-link" aria-current="page" href="/landing">Home</a>
+                    <a class="nav-link" href="/auth/signup">Signup</a>
+                    <a class="nav-link" href="/auth/login">Login</a>
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                </div>
+                <span class="navbar-text">
+                    Navbar text with an inline element
+                </span>
+            </div>
+        </div>
+    </nav>
+
     @if (session('flash'))
     <div class="alert alert-primary" role="alert">
         {{ session('flash') }}
